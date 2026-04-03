@@ -2,95 +2,313 @@
 
 all_questions = [
     # ==========================================
-    # LEVEL 1: EASY (Foundational Grade 7)
+    # LEVEL 1: EASY (Foundational Grade 7-8)
     # ==========================================
+    {"id": 101, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", 
+     "question": r"Compute the exact value of the numerical expression $15 - (-4) + 3 \times (2^2 - 2)$ by following the standard mathematical order of operations.", 
+     "options": ["25", "13", "11", "19"], "answer": "25", 
+     "solution": r"Simplify inside the parentheses: $2^2 - 2 = 4 - 2 = 2$. Multiply: $3 \times 2 = 6$. The expression becomes $15 + 4 + 6 = 25$."},
     
-    # 1. Number Sense & Operations
-    {"id": 101, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", "question": r"Evaluate the following expression by following the correct order of operations: $15 - (-4) + 3 \times 2$.", "options": ["25", "13", "11", "26"], "answer": "25", "solution": r"First, perform multiplication: $3 \times 2 = 6$. The expression becomes $15 + 4 + 6$. Summing these gives 25."},
-    {"id": 102, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", "question": r"A scientist is conducting an experiment where the temperature of a liquid starts at $-12^\circ\text{C}$. The liquid is heated until it rises by exactly $25^\circ\text{C}$. What is the final temperature?", "options": ["$13^\circ\text{C}$", "$-13^\circ\text{C}$", "$37^\circ\text{C}$", "$12^\circ\text{C}$"], "answer": "$13^\circ\text{C}$", "solution": r"The calculation is $-12 + 25 = 13$."},
-    {"id": 103, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", "question": r"A recipe for 4 people requires 300g of flour. If you want to make the same recipe for 10 people, how much flour is required?", "options": ["750g", "600g", "900g", "1200g"], "answer": "750g", "solution": r"Flour per person: $300 / 4 = 75\text{g}$. For 10 people: $75 \times 10 = 750\text{g}$."},
-    {"id": 104, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", "question": r"Which of the following is equivalent to $0.045$?", "options": ["4.5%", "45%", "0.45%", "450%"], "answer": "4.5%", "solution": r"$0.045 \times 100 = 4.5\%$."},
-    {"id": 105, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", "question": r"A library has 1,200 books. If 15% are Science Fiction and 25% are History, how many more History books are there than Science Fiction?", "options": ["120", "180", "300", "480"], "answer": "120", "solution": r"Difference is $10\%$ of 1,200, which is 120."},
+    {"id": 102, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", 
+     "question": r"In a controlled laboratory experiment, a liquid starts at an initial temperature of $-12^\circ\text{C}$. If the liquid is heated at a constant rate until its temperature rises by exactly $25^\circ\text{C}$, what is the final recorded temperature?", 
+     "options": ["$13^\circ\text{C}$", "$-13^\circ\text{C}$", "$37^\circ\text{C}$", "$12^\circ\text{C}$"], "answer": "$13^\circ\text{C}$", 
+     "solution": r"The final temperature is found by the sum: $-12 + 25 = 13$."},
 
-    # 2. Pre-Algebra & Equations
-    {"id": 106, "difficulty": "Level 1: Easy", "category": "Pre-Algebra & Equations", "question": r"Solve for $x$: $4x + 7 = 23$.", "options": ["4", "3", "5", "6"], "answer": "4", "solution": r"$4x = 16 \rightarrow x=4$."},
-    {"id": 107, "difficulty": "Level 1: Easy", "category": "Pre-Algebra & Equations", "question": r"Simplify the expression: $3(a + 4) - 2a$.", "options": ["a + 12", "5a + 12", "a + 4", "5a + 4"], "answer": "a + 12", "solution": r"$3a + 12 - 2a = a + 12$."},
-    {"id": 108, "difficulty": "Level 1: Easy", "category": "Pre-Algebra & Equations", "question": r"If $a = 4$ and $b = -3$, find the value of $a^2 + b$.", "options": ["13", "19", "5", "1"], "answer": "13", "solution": r"$4^2 - 3 = 16 - 3 = 13$."},
-    {"id": 109, "difficulty": "Level 1: Easy", "category": "Pre-Algebra & Equations", "question": r"Solve for $y$ in the following equation: $y/4 + 6 = 10$.", "options": ["16", "4", "1", "8"], "answer": "16", "solution": r"$y/4 = 4 \rightarrow y=16$."},
-    {"id": 110, "difficulty": "Level 1: Easy", "category": "Pre-Algebra & Equations", "question": r"Simplify the expression: $2(x+3) - 3(x-1)$.", "options": ["-x + 9", "-x + 3", "x + 9", "5x + 3"], "answer": "-x + 9", "solution": r"$2x + 6 - 3x + 3 = -x + 9$."},
+    {"id": 103, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", 
+     "question": r"A bakery uses a specific ratio of 300 grams of flour to produce 4 loaves of bread. Determine the total amount of flour required, in grams, to produce 10 loaves of the same bread.", 
+     "options": ["750g", "600g", "900g", "1200g"], "answer": "750g", 
+     "solution": r"Flour per loaf: $300 / 4 = 75\text{g}$. For 10 loaves: $75 \times 10 = 750\text{g}$."},
 
-    # 3. Geometry & Data
-    {"id": 111, "difficulty": "Level 1: Easy", "category": "Geometry & Data", "question": r"Find the area of a triangle with a base of 10 cm and a height of 6 cm.", "options": ["30 cm²", "60 cm²", "16 cm²", "120 cm²"], "answer": "30 cm²", "solution": r"$0.5 \times 10 \times 6 = 30$."},
-    {"id": 112, "difficulty": "Level 1: Easy", "category": "Geometry & Data", "question": r"A square has a perimeter of 32 cm. What is its area?", "options": ["64 cm²", "32 cm²", "16 cm²", "40 cm²"], "answer": "64 cm²", "solution": r"Side = $32/4 = 8$. Area = $8^2 = 64$."},
-    {"id": 113, "difficulty": "Level 1: Easy", "category": "Geometry & Data", "question": r"What is the sum of the interior angles of a regular pentagon?", "options": ["540°", "360°", "720°", "180°"], "answer": "540°", "image_svg": '''<div align="center"><svg width="100" height="100" viewBox="0 0 100 100"><polygon points="50,5 95,39 78,94 22,94 5,39" fill="none" stroke="#333" stroke-width="2"/></svg></div>''', "solution": r"$(5-2) \times 180 = 540$."},
-    {"id": 114, "difficulty": "Level 1: Easy", "category": "Geometry & Data", "question": r"A triangle has two angles measuring 45° and 75°. What is the measure of the third angle?", "options": ["60°", "90°", "45°", "180°"], "answer": "60°", "solution": r"$180 - (45 + 75) = 60$."},
-    {"id": 115, "difficulty": "Level 1: Easy", "category": "Geometry & Data", "question": r"Find the arithmetic mean (average) of the set: {4, 8, 12}.", "options": ["8", "24", "6", "10"], "answer": "8", "solution": r"$(4+8+12)/3 = 8$."},
+    {"id": 104, "difficulty": "Level 1: Easy", "category": "Number Theory & Probability", 
+     "question": r"Identify the Greatest Common Factor (GCF) of the set of integers $\{48, 72, 120\}$.", 
+     "options": ["24", "12", "6", "36"], "answer": "24", 
+     "solution": r"Factors of 48: $2^4 \cdot 3$. Factors of 72: $2^3 \cdot 3^2$. Factors of 120: $2^3 \cdot 3 \cdot 5$. Common factors: $2^3 \cdot 3 = 24$."},
 
-    # 4. Number Theory & Probability
-    {"id": 116, "difficulty": "Level 1: Easy", "category": "Number Theory & Probability", "question": r"What is the Greatest Common Factor (GCF) of 12 and 18?", "options": ["6", "2", "3", "36"], "answer": "6", "solution": r"Common factors are 1, 2, 3, 6. GCF is 6."},
-    {"id": 117, "difficulty": "Level 1: Easy", "category": "Number Theory & Probability", "question": r"If you roll a fair 6-sided die, what is the probability of rolling an even number?", "options": ["1/2", "1/6", "1/3", "2/3"], "answer": "1/2", "solution": r"Even numbers are 2, 4, 6. $3/6 = 1/2$."},
-    {"id": 118, "difficulty": "Level 1: Easy", "category": "Number Theory & Probability", "question": r"Which of the following is a prime number?", "options": ["17", "9", "15", "21"], "answer": "17", "solution": r"17 is only divisible by 1 and itself."},
-    {"id": 119, "difficulty": "Level 1: Easy", "category": "Number Theory & Probability", "question": r"Find the Least Common Multiple (LCM) of 4 and 6.", "options": ["12", "10", "24", "2"], "answer": "12", "solution": r"Multiples of 4: 4, 8, 12. Multiples of 6: 6, 12. LCM is 12."},
-    {"id": 120, "difficulty": "Level 1: Easy", "category": "Number Theory & Probability", "question": r"If a coin is flipped twice, what is the probability of getting two heads?", "options": ["1/4", "1/2", "1/8", "3/4"], "answer": "1/4", "solution": r"$1/2 \times 1/2 = 1/4$."},
+    {"id": 105, "difficulty": "Level 1: Easy", "category": "Pre-Algebra & Equations", 
+     "question": r"Determine the value of $x$ that satisfies the linear equation $5(x - 2) = 3(x + 4)$.", 
+     "options": ["11", "1", "22", "5"], "answer": "11", 
+     "solution": r"Expand: $5x - 10 = 3x + 12$. Rearrange: $2x = 22$. Thus, $x = 11$."},
+
+    {"id": 106, "difficulty": "Level 1: Easy", "category": "Pre-Algebra & Equations", 
+     "question": r"If $a = 4$ and $b = -3$, compute the value of the algebraic expression $a^2 - 2b + 5$.", 
+     "options": ["27", "15", "21", "19"], "answer": "27", 
+     "solution": r"Substitute values: $4^2 - 2(-3) + 5 = 16 + 6 + 5 = 27$."},
+
+    {"id": 107, "difficulty": "Level 1: Easy", "category": "Geometry & Data", 
+     "question": r"A rectangular field has a perimeter of 40 meters. If the length is 4 meters longer than the width, calculate the total area of the field in square meters.", 
+     "options": ["96", "84", "100", "120"], "answer": "96", 
+     "solution": r"$2(w + w+4) = 40 \rightarrow 4w+8=40 \rightarrow w=8, l=12$. Area $= 12 \times 8 = 96$."},
+
+    {"id": 108, "difficulty": "Level 1: Easy", "category": "Geometry & Data", 
+     "question": r"A regular pentagon is inscribed in a circle. Determine the sum of the interior angles of this pentagon.", 
+     "options": ["540°", "360°", "720°", "180°"], "answer": "540°", 
+     "solution": r"Using $(n-2) \times 180$: $(5-2) \times 180 = 3 \times 180 = 540^\circ$."},
+
+    {"id": 109, "difficulty": "Level 1: Easy", "category": "Number Theory & Probability", 
+     "question": r"A fair six-sided die is rolled twice. What is the probability that the sum of the two numbers shown is exactly 5?", 
+     "options": ["1/9", "1/6", "4/36", "1/12"], "answer": "1/9", 
+     "solution": r"Pairs: (1,4), (2,3), (3,2), (4,1). Total outcomes: 36. Prob: $4/36 = 1/9$."},
+
+    {"id": 110, "difficulty": "Level 1: Easy", "category": "Geometry & Data", 
+     "question": r"Find the arithmetic mean (average) of the data set $\{14, 22, 18, 30, 16\}$.", 
+     "options": ["20", "18", "22", "25"], "answer": "20", 
+     "solution": r"Sum = 100. Count = 5. $100 / 5 = 20$."},
+
+    {"id": 111, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", 
+     "question": r"Convert the fraction $7/8$ into its equivalent percentage form.", 
+     "options": ["87.5%", "78%", "82.5%", "75%"], "answer": "87.5%", 
+     "solution": r"$7 \div 8 = 0.875$. Multiplying by 100 yields $87.5\%$."},
+
+    {"id": 112, "difficulty": "Level 1: Easy", "category": "Pre-Algebra & Equations", 
+     "question": r"The sum of three consecutive integers is 72. What is the value of the largest of these three integers?", 
+     "options": ["25", "23", "24", "26"], "answer": "25", 
+     "solution": r"$x + (x+1) + (x+2) = 72 \rightarrow 3x+3=72 \rightarrow x=23$. Largest is $23+2=25$."},
+
+    {"id": 113, "difficulty": "Level 1: Easy", "category": "Number Theory & Probability", 
+     "question": r"Identify the next term in the arithmetic sequence: $3, 7, 11, 15, \dots$", 
+     "options": ["19", "17", "21", "23"], "answer": "19", 
+     "solution": r"The common difference is $+4$. $15 + 4 = 19$."},
+
+    {"id": 114, "difficulty": "Level 1: Easy", "category": "Geometry & Data", 
+     "question": r"A square has a total perimeter of 32 cm. Compute the area of this square in square centimeters.", 
+     "options": ["64", "32", "16", "48"], "answer": "64", 
+     "solution": r"Side $= 32 / 4 = 8$. Area $= 8^2 = 64$."},
+
+    {"id": 115, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", 
+     "question": r"What is the result of dividing $1.2$ by $0.3$ and then adding the product of $0.5$ and $4$?", 
+     "options": ["6", "4.2", "2.2", "10"], "answer": "6", 
+     "solution": r"$(1.2 / 0.3) + (0.5 \times 4) = 4 + 2 = 6$."},
+
+    {"id": 116, "difficulty": "Level 1: Easy", "category": "Number Theory & Probability", 
+     "question": r"How many prime numbers exist between the integers 10 and 30?", 
+     "options": ["6", "5", "4", "7"], "answer": "6", 
+     "solution": r"The primes are: 11, 13, 17, 19, 23, 29. Total = 6."},
+
+    {"id": 117, "difficulty": "Level 1: Easy", "category": "Pre-Algebra & Equations", 
+     "question": r"Simplify the algebraic expression by combining like terms: $2(x+3) - 3(x-1)$.", 
+     "options": ["-x + 9", "-x + 3", "x + 9", "5x + 3"], "answer": "-x + 9", 
+     "solution": r"$2x + 6 - 3x + 3 = -x + 9$."},
+
+    {"id": 118, "difficulty": "Level 1: Easy", "category": "Geometry & Data", 
+     "question": r"A cube has a volume of 27 cubic centimeters. Determine the total surface area of the cube in square centimeters.", 
+     "options": ["54", "36", "9", "27"], "answer": "54", 
+     "solution": r"Side $= \sqrt[3]{27} = 3$. Surface Area $= 6 \times 3^2 = 54$."},
+
+    {"id": 119, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", 
+     "question": r"Calculate $0.4\%$ of 500.", 
+     "options": ["2", "20", "200", "0.2"], "answer": "2", 
+     "solution": r"$0.004 \times 500 = 2$."},
+
+    {"id": 120, "difficulty": "Level 1: Easy", "category": "Number Theory & Probability", 
+     "question": r"A bag contains 5 red, 3 blue, and 2 green marbles. If one marble is drawn at random, what is the probability that it is NOT blue?", 
+     "options": ["7/10", "3/10", "1/2", "4/5"], "answer": "7/10", 
+     "solution": r"Total = 10. Blue = 3. Non-blue = $10 - 3 = 7$. Prob = 7/10."},
 
     # ==========================================
-    # LEVEL 2: INTERMEDIATE (Grade 8 Standard)
+    # LEVEL 2: INTERMEDIATE (Grade 8-9 Standard)
     # ==========================================
-    
-    # 1. Number Sense
-    {"id": 201, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", "question": r"Simplify using index laws: $\frac{5^7 \times 5^{-3}}{5^2}$.", "options": ["25", "125", "5", "625"], "answer": "25", "solution": r"Numerator: $5^{(7-3)} = 5^4$. Divide: $5^{(4-2)} = 5^2 = 25$."},
-    {"id": 202, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", "question": r"Evaluate: $\left( -\frac{2}{3} \right)^2 \div \frac{4}{9}$.", "options": ["1", "-1", "16/81", "4/9"], "answer": "1", "solution": r"$4/9 \div 4/9 = 1$."},
-    {"id": 203, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", "question": r"A store marks up a $40 item by 25%. Then applies a 10% discount to the new price. Final price?", "options": ["$45", "$42.50", "$46", "$50"], "answer": "$45", "solution": r"$40 \rightarrow 50 \rightarrow 45$."},
-    {"id": 204, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", "question": r"Express $0.00045$ in proper scientific notation.", "options": ["$4.5 \times 10^{-4}$", "$4.5 \times 10^{-5}$", "$45 \times 10^{-5}$", "0.45"], "answer": "$4.5 \times 10^{-4}$", "solution": r"Move decimal 4 places right."},
-    {"id": 205, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", "question": r"Evaluate: $\sqrt{1.44} + (0.2)^2$.", "options": ["1.24", "1.48", "1.22", "1.64"], "answer": "1.24", "solution": r"$1.2 + 0.04 = 1.24$."},
+    {"id": 201, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", 
+     "question": r"Evaluate the expression by applying the laws of exponents and order of operations: $\frac{2^5 \times 3^4}{2^3 \times 3^2} - \sqrt{144}$.", 
+     "options": ["24", "36", "12", "48"], "answer": "24", 
+     "solution": r"Simplify exponents: $2^2 \times 3^2 = 4 \times 9 = 36$. $\sqrt{144} = 12$. $36 - 12 = 24$."},
 
-    # 2. Pre-Algebra
-    {"id": 206, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", "question": r"A rectangle has a length 3 cm longer than its width. If the perimeter is 34 cm, what is the length?", "options": ["10 cm", "7 cm", "13 cm", "17 cm"], "answer": "10 cm", "solution": r"$2(w + w+3) = 34 \rightarrow 4w+6=34 \rightarrow w=7, l=10$."},
-    {"id": 207, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", "question": r"Solve for $x$: $2(x - 3) = 5x + 9$.", "options": ["-5", "-1", "5", "3"], "answer": "-5", "solution": r"$2x - 6 = 5x + 9 \rightarrow -3x = 15 \rightarrow x = -5$."},
-    {"id": 208, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", "question": r"Find the slope of a line passing through (1,2) and (3,10).", "options": ["4", "2", "8", "0.25"], "answer": "4", "solution": r"$(10-2)/(3-1) = 4$."},
-    {"id": 209, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", "question": r"Solve the system: $x+y=10, x-y=2$.", "options": ["6, 4", "5, 5", "7, 3", "8, 2"], "answer": "6, 4", "solution": r"$2x=12 \rightarrow x=6, y=4$."},
-    {"id": 210, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", "question": r"Simplify: $(2x - 3)^2$.", "options": ["$4x^2 - 12x + 9$", "$4x^2 - 9$", "$4x^2 + 9$", "$2x^2 - 6x + 9$"], "answer": "$4x^2 - 12x + 9$", "solution": r"$(2x-3)(2x-3) = 4x^2 - 6x - 6x + 9$."},
+    {"id": 202, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", 
+     "question": r"Determine the total number of distinct positive factors for the integer 72.", 
+     "options": ["12", "10", "8", "16"], "answer": "12", 
+     "solution": r"$72 = 2^3 \cdot 3^2$. Factors = $(3+1)(2+1) = 4 \times 3 = 12$."},
 
-    # 3. Geometry
-    {"id": 211, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", "question": r"A ladder leans against a wall. The base is 5m from the wall and it reaches a height of 12m. How long is the ladder?", "options": ["13m", "17m", "15m", "14m"], "answer": "13m", "image_svg": '''<div align="center"><svg width="150" height="150"><line x1="20" y1="20" x2="20" y2="130" stroke="#333" stroke-width="3"/><line x1="20" y1="130" x2="130" y2="130" stroke="#333" stroke-width="3"/><line x1="20" y1="20" x2="130" y2="130" stroke="#ff4b4b" stroke-width="3" stroke-dasharray="4"/></svg></div>''', "solution": r"$\sqrt{5^2 + 12^2} = 13$."},
-    {"id": 212, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", "question": r"Volume of a cylinder with radius 3m and height 7m? (use $\pi \approx 22/7$)", "options": ["198 m³", "66 m³", "462 m³", "154 m³"], "answer": "198 m³", "solution": r"$\frac{22}{7} \times 9 \times 7 = 198$."},
-    {"id": 213, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", "question": r"Area of a trapezoid with bases 6 and 10 and height 4?", "options": ["32", "64", "24", "16"], "answer": "32", "solution": r"$0.5 \times (6+10) \times 4 = 32$."},
-    {"id": 214, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", "question": r"Surface area of a cube with side 3?", "options": ["54", "27", "36", "9"], "answer": "54", "solution": r"$6 \times 3^2 = 54$."},
-    {"id": 215, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", "question": r"In a set {10, 20, 30, 40, 100}, which is larger: mean or median?", "options": ["Mean", "Median", "They are equal", "Cannot determine"], "answer": "Mean", "solution": r"Median=30, Mean=40."},
+    {"id": 203, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", 
+     "question": r"A taxi company charges a base fee of $5.00 plus an additional $2.50 per mile traveled. If a passenger's total fare was $35.00, compute the total distance traveled in miles.", 
+     "options": ["12", "14", "10", "15"], "answer": "12", 
+     "solution": r"$5 + 2.5m = 35 \rightarrow 2.5m = 30 \rightarrow m = 12$."},
 
-    # 4. Number Theory
-    {"id": 216, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", "question": r"How many distinct positive factors does 72 have?", "options": ["12", "10", "8", "16"], "answer": "12", "solution": r"$72 = 2^3 \times 3^2 \rightarrow (3+1)(2+1) = 12$."},
-    {"id": 217, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", "question": r"What is the units digit of $3^{40}$?", "options": ["1", "3", "9", "7"], "answer": "1", "solution": r"Cycle 3,9,7,1. $40/4$ rem 0 $\rightarrow$ 1."},
-    {"id": 218, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", "question": r"GCF of 84, 126, and 210?", "options": ["42", "21", "14", "6"], "answer": "42", "solution": r"All are multiples of 42."},
-    {"id": 219, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", "question": r"Sum of interior angles of a convex octagon?", "options": ["1080°", "720°", "900°", "1440°"], "answer": "1080°", "solution": r"$(8-2) \times 180 = 1080$."},
-    {"id": 220, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", "question": r"3-letter arrangements from {A, B, C, D, E} without repetition?", "options": ["60", "10", "15", "120"], "answer": "60", "solution": r"$5 \times 4 \times 3 = 60$."},
+    {"id": 204, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", 
+     "question": r"A cylindrical water tank has a radius of 3 meters and a height of 7 meters. Using $\pi \approx 22/7$, calculate the total volume of the tank in cubic meters.", 
+     "options": ["198", "66", "462", "154"], "answer": "198",
+     "image_svg": '''<div align="center"><svg width="100" height="120"><ellipse cx="50" cy="20" rx="30" ry="10" stroke="#333" fill="none"/><line x1="20" y1="20" x2="20" y2="100" stroke="#333"/><line x1="80" y1="20" x2="80" y2="100" stroke="#333"/><ellipse cx="50" cy="100" rx="30" ry="10" stroke="#333" fill="none" stroke-dasharray="2,2"/></svg></div>''',
+     "solution": r"Volume $= \pi r^2 h = (22/7) \times 9 \times 7 = 22 \times 9 = 198$."},
+
+    {"id": 205, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", 
+     "question": r"Simplify the complex fraction: $\frac{1/2 + 1/3}{1/4}$.", 
+     "options": ["10/3", "5/12", "1/6", "2"], "answer": "10/3", 
+     "solution": r"Numerator: $3/6 + 2/6 = 5/6$. Result: $5/6 \times 4 = 20/6 = 10/3$."},
+
+    {"id": 206, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", 
+     "question": r"Compute the solution set for $x$ in the quadratic equation: $x^2 - 5x + 6 = 0$.", 
+     "options": ["2, 3", "-2, -3", "1, 6", "0, 5"], "answer": "2, 3", 
+     "solution": r"Factor: $(x-2)(x-3)=0$. Roots are 2 and 3."},
+
+    {"id": 207, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", 
+     "question": r"Determine the length of the hypotenuse of a right-angled triangle with leg lengths of 9 units and 12 units.", 
+     "options": ["15", "21", "13", "144"], "answer": "15", 
+     "solution": r"$\sqrt{9^2 + 12^2} = \sqrt{81 + 144} = \sqrt{225} = 15$."},
+
+    {"id": 208, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", 
+     "question": r"In a standard deck of 52 playing cards, what is the probability of randomly drawing either a King or a Queen?", 
+     "options": ["2/13", "1/13", "4/13", "1/26"], "answer": "2/13", 
+     "solution": r"8 target cards (4 Kings, 4 Queens). $8/52 = 2/13$."},
+
+    {"id": 209, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", 
+     "question": r"Represent the decimal value $0.00045$ in proper scientific notation.", 
+     "options": ["$4.5 \times 10^{-4}$", "$4.5 \times 10^{-5}$", "$45 \times 10^{-5}$", "0.45"], "answer": "$4.5 \times 10^{-4}$", 
+     "solution": r"Move decimal 4 places right: $4.5 \times 10^{-4}$."},
+
+    {"id": 210, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", 
+     "question": r"Solve the simultaneous linear system: $x + y = 10$ and $x - y = 2$. Find $(x, y)$.", 
+     "options": ["(6, 4)", "(5, 5)", "(7, 3)", "(8, 2)"], "answer": "(6, 4)", 
+     "solution": r"Add equations: $2x = 12 \rightarrow x=6$. Substitute: $6+y=10 \rightarrow y=4$."},
+
+    {"id": 211, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", 
+     "question": r"Compute the interior angle measure, in degrees, of a regular hexagon.", 
+     "options": ["120°", "108°", "90°", "135°"], "answer": "120°", 
+     "solution": r"Sum $= (6-2) \times 180 = 720$. Angle $= 720 / 6 = 120^\circ$."},
+
+    {"id": 212, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", 
+     "question": r"Determine the units digit of the large power $3^{40}$.", 
+     "options": ["1", "3", "9", "7"], "answer": "1", 
+     "solution": r"Cycle of 3: 3, 9, 7, 1 (length 4). $40 \div 4 = 10$ remainder 0. Units digit is 1."},
+
+    {"id": 213, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", 
+     "question": r"Compute the value of $2.5^2 - 1.5^2$.", 
+     "options": ["4", "5", "6.25", "1"], "answer": "4", 
+     "solution": r"$(2.5-1.5)(2.5+1.5) = 1 \times 4 = 4$."},
+
+    {"id": 214, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", 
+     "question": r"Let $f(x) = 3x - 5$. Compute the composite value $f(f(2))$.", 
+     "options": ["-2", "1", "2", "-5"], "answer": "-2", 
+     "solution": r"$f(2) = 3(2)-5 = 1$. $f(1) = 3(1)-5 = -2$."},
+
+    {"id": 215, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", 
+     "question": r"Calculate the exact area of an equilateral triangle with a side length of 4 units.", 
+     "options": ["$4\sqrt{3}$", "8", "$8\sqrt{3}$", "4"], "answer": "$4\sqrt{3}$", 
+     "solution": r"Area $= s^2\sqrt{3}/4 = 16\sqrt{3}/4 = 4\sqrt{3}$."},
+
+    {"id": 216, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", 
+     "question": r"How many integers between 1 and 100 are divisible by both 3 and 5?", 
+     "options": ["6", "5", "7", "10"], "answer": "6", 
+     "solution": r"Must be divisible by LCM(3,5)=15. Multiples: 15, 30, 45, 60, 75, 90. Total = 6."},
+
+    {"id": 217, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", 
+     "question": r"Simplify the radical expression $\sqrt{72} \div \sqrt{2}$.", 
+     "options": ["6", "36", "12", "18"], "answer": "6", 
+     "solution": r"$\sqrt{72/2} = \sqrt{36} = 6$."},
+
+    {"id": 218, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", 
+     "question": r"Determine the slope of the line represented by the equation $2x + 3y = 6$.", 
+     "options": ["-2/3", "2/3", "-2", "2"], "answer": "-2/3", 
+     "solution": r"$3y = -2x + 6 \rightarrow y = -2/3x + 2$. Slope $= -2/3$."},
+
+    {"id": 219, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", 
+     "question": r"Find the volume of a sphere with a radius of 3 units in terms of $\pi$.", 
+     "options": ["$36\pi$", "$12\pi$", "$9\pi$", "$27\pi$"], "answer": "$36\pi$", 
+     "solution": r"Volume $= 4/3 \pi r^3 = 4/3 \pi (27) = 36\pi$."},
+
+    {"id": 220, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", 
+     "question": r"Compute the sum of the interior angles of a convex octagon.", 
+     "options": ["1080°", "720°", "900°", "1440°"], "answer": "1080°", 
+     "solution": r"$(8-2) \times 180 = 6 \times 180 = 1080^\circ$."},
 
     # ==========================================
-    # LEVEL 3: DIFFICULT (Grade 9 Competition)
+    # LEVEL 3: DIFFICULT (Advanced/Olympiad)
     # ==========================================
-    
-    # 1. Number Sense
-    {"id": 301, "difficulty": "Level 3: Difficult", "category": "Number Sense & Operations", "question": r"Simplify the radical expression: $\sqrt{75} + \sqrt{48} - \sqrt{27}$.", "options": [r"$6\sqrt{3}$", r"$12\sqrt{3}$", r"$8\sqrt{3}$", r"$\sqrt{96}$"], "answer": r"$6\sqrt{3}$", "solution": r"$5\sqrt{3} + 4\sqrt{3} - 3\sqrt{3} = 6\sqrt{3}$."},
-    {"id": 302, "difficulty": "Level 3: Difficult", "category": "Number Sense & Operations", "question": r"If $x + 1/x = 5$, find the value of $x^2 + 1/x^2$.", "options": ["23", "25", "27", "10"], "answer": "23", "solution": r"$(x+1/x)^2 - 2 = 25 - 2 = 23$."},
-    {"id": 303, "difficulty": "Level 3: Difficult", "category": "Number Sense & Operations", "question": r"Evaluate: $8^{2/3}$.", "options": ["4", "2", "16", "8"], "answer": "4", "solution": r"$(\sqrt[3]{8})^2 = 2^2 = 4$."},
-    {"id": 304, "difficulty": "Level 3: Difficult", "category": "Number Sense & Operations", "question": r"Find the positive integer value of $x$: $\sqrt{6 + \sqrt{6 + \sqrt{6 + \dots}}} = x$.", "options": ["3", "2", "6", "9"], "answer": "3", "solution": r"$x^2 = 6+x \rightarrow (x-3)(x+2)=0 \rightarrow x=3$."},
-    {"id": 305, "difficulty": "Level 3: Difficult", "category": "Number Sense & Operations", "question": r"A car increases speed from 40 km/h to 50 km/h. Percentage increase?", "options": ["25%", "10%", "20%", "15%"], "answer": "25%", "solution": r"$(10/40) \times 100 = 25\%$."},
+    {"id": 301, "difficulty": "Level 3: Difficult", "category": "Number Sense & Operations", 
+     "question": r"Consider the infinite nested radical $x = \sqrt{6 + \sqrt{6 + \sqrt{6 + \dots}}}$. Determine the positive integer value of $x$.", 
+     "options": ["3", "2", "6", "9"], "answer": "3", 
+     "solution": r"$x = \sqrt{6+x} \rightarrow x^2 - x - 6 = 0 \rightarrow (x-3)(x+2)=0$. $x=3$."},
 
-    # 2. Pre-Algebra
-    {"id": 306, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", "question": r"Expand and simplify: $(2x - 3)(x + 4) - (x^2 - 5)$.", "options": ["$x^2 + 5x - 7$", "$x^2 + 5x + 17$", "$2x^2 + 5x - 7$", "$x^2 - 5x - 7$"], "answer": "$x^2 + 5x - 7$", "solution": r"$(2x^2+5x-12) - x^2+5 = x^2+5x-7$."},
-    {"id": 307, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", "question": r"The sum of two numbers is 14 and their difference is 4. Find their product.", "options": ["45", "40", "48", "50"], "answer": "45", "solution": r"$x+y=14, x-y=4 \rightarrow x=9, y=5$. Product=45."},
-    {"id": 308, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", "question": r"Solve for $x$: $8^{x-1} = 16^{2x+3}$.", "options": ["-3", "-15/5", "-3/5", "-15/4"], "answer": "-3", "solution": r"$3(x-1) = 4(2x+3) \rightarrow 3x-3=8x+12 \rightarrow -15=5x$."},
-    {"id": 309, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", "question": r"Find the vertex of the parabola $y = x^2 - 4x + 7$.", "options": ["(2, 3)", "(2, 7)", "(-2, 3)", "(4, 7)"], "answer": "(2, 3)", "solution": r"$x=2, y=4-8+7=3$."},
-    {"id": 310, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", "question": r"Solve $x^2 - 5x + 6 = 0$ for $x$.", "options": ["2, 3", "-2, -3", "1, 6", "0, 5"], "answer": "2, 3", "solution": r"$(x-2)(x-3)=0$."},
+    {"id": 302, "difficulty": "Level 3: Difficult", "category": "Number Theory & Probability", 
+     "question": r"Compute the remainder when the large power $2^{2026}$ is divided by 7.", 
+     "options": ["2", "4", "1", "0"], "answer": "2", 
+     "solution": r"Cycle of $2^n \pmod 7$: 2, 4, 1. $2026 \div 3$ rem 1. Same as $2^1 = 2$."},
 
-    # 3. Geometry
-    {"id": 311, "difficulty": "Level 3: Difficult", "category": "Geometry & Data", "question": r"Area of a regular hexagon with side length 2?", "options": ["$6\sqrt{3}$", "$12\sqrt{3}$", "$3\sqrt{3}$", "6"], "answer": "$6\sqrt{3}$", "solution": r"$6 \times (2^2 \sqrt{3}/4) = 6\sqrt{3}$."},
-    {"id": 312, "difficulty": "Level 3: Difficult", "category": "Geometry & Data", "question": r"A rectangular box has SA=94 cm². Length=4, width=3. Find height.", "options": ["5", "4", "6", "3"], "answer": "5", "solution": r"$2(12 + 4h + 3h) = 94 \rightarrow 12+7h=47 \rightarrow h=5$."},
-    {"id": 313, "difficulty": "Level 3: Difficult", "category": "Geometry & Data", "question": r"Ratio of volume of sphere to volume of circumscribed cube?", "options": [r"$\pi/6$", r"$\pi/4$", r"$2\pi/3$", r"$1/2$"], "answer": r"$\pi/6$", "solution": r"$\frac{4/3\pi r^3}{8r^3} = \pi/6$."},
-    {"id": 314, "difficulty": "Level 3: Difficult", "category": "Geometry & Data", "question": r"Distance between (1, 1) and (4, 5)?", "options": ["5", "7", "4", "25"], "answer": "5", "solution": r"$\sqrt{3^2 + 4^2} = 5$."},
-    {"id": 315, "difficulty": "Level 3: Difficult", "category": "Geometry & Data", "question": r"Interior angles of a decagon sum to?", "options": ["1440°", "1800°", "1260°", "1620°"], "answer": "1440°", "solution": r"$(10-2) \times 180 = 1440$."},
+    {"id": 303, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", 
+     "question": r"In a group of 30 students, 18 play soccer, 15 play basketball, and 5 play neither sport. How many students play both soccer and basketball?", 
+     "options": ["8", "10", "5", "12"], "answer": "8", 
+     "solution": r"Total playing = $30-5=25$. Both = $(18+15)-25 = 8$."},
 
-    # 4. Number Theory
-    {"id": 316, "difficulty": "Level 3: Difficult", "category": "Number Theory & Probability", "question": r"Smallest positive integer divisible by all integers 1 to 10?", "options": ["2520", "5040", "1260", "840"], "answer": "2520", "solution": r"LCM(1..10) = 2520."},
-    {"id": 317, "difficulty": "Level 3: Difficult", "category": "Number Theory & Probability", "question": r"Two dice are rolled. Prob that the sum is prime?", "options": ["5/12", "7/12", "1/2", "1/3"], "answer": "5/12", "solution": r"Sum 2,3,5,7,11 $\rightarrow$ 15 ways. $15/36 = 5/12$."},
-    {"id": 318, "difficulty": "Level 3: Difficult", "category": "Number Theory & Probability", "question": r
+    {"id": 304, "difficulty": "Level 3: Difficult", "category": "Geometry & Data", 
+     "question": r"Two parallel lines are intersected by a transversal. If alternate interior angles measure $(3x - 15)^\circ$ and $(2x + 10)^\circ$, find the value of $x$.", 
+     "options": ["25", "5", "35", "15"], "answer": "25",
+     "image_svg": '''<div align="center"><svg width="200" height="120"><line x1="20" y1="30" x2="180" y2="30" stroke="#333" stroke-width="2"/><line x1="20" y1="90" x2="180" y2="90" stroke="#333" stroke-width="2"/><line x1="50" y1="110" x2="150" y2="10" stroke="#ff4b4b" stroke-width="2"/></svg></div>''',
+     "solution": r"Parallel lines $\rightarrow$ alternate interior angles are equal: $3x - 15 = 2x + 10 \rightarrow x = 25$."},
+
+    {"id": 305, "difficulty": "Level 3: Difficult", "category": "Number Sense & Operations", 
+     "question": r"Determine the exact value of the sum $\sqrt{75} + \sqrt{48} - \sqrt{27}$.", 
+     "options": [r"$6\sqrt{3}$", r"$12\sqrt{3}$", r"$8\sqrt{3}$", r"$\sqrt{96}$"], "answer": r"$6\sqrt{3}$", 
+     "solution": r"$5\sqrt{3} + 4\sqrt{3} - 3\sqrt{3} = 6\sqrt{3}$."},
+
+    {"id": 306, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", 
+     "question": r"If $x + 1/x = 4$, determine the value of $x^2 + 1/x^2$.", 
+     "options": ["14", "16", "18", "12"], "answer": "14", 
+     "solution": r"$(x+1/x)^2 = x^2 + 2 + 1/x^2 = 16 \rightarrow x^2 + 1/x^2 = 14$."},
+
+    {"id": 307, "difficulty": "Level 3: Difficult", "category": "Geometry & Data", 
+     "question": r"Calculate the volume of a right circular cone with a radius of 3 units and a height of 4 units.", 
+     "options": ["$12\pi$", "$36\pi$", "$16\pi$", "$4\pi$"], "answer": "$12\pi$", 
+     "solution": r"Volume $= 1/3 \pi r^2 h = 1/3 \pi (9)(4) = 12\pi$."},
+
+    {"id": 308, "difficulty": "Level 3: Difficult", "category": "Number Theory & Probability", 
+     "question": r"Determine the number of unique permutations of the letters in the word 'MATH'.", 
+     "options": ["24", "12", "4", "48"], "answer": "24", 
+     "solution": r"$4! = 4 \times 3 \times 2 \times 1 = 24$."},
+
+    {"id": 309, "difficulty": "Level 3: Difficult", "category": "Number Sense & Operations", 
+     "question": r"Rationalize the denominator of the expression $1 / (\sqrt{3}-\sqrt{2})$.", 
+     "options": [r"$\sqrt{3}+\sqrt{2}$", "1", r"$\sqrt{6}$", r"$\sqrt{3}-\sqrt{2}$"], "answer": r"$\sqrt{3}+\sqrt{2}$", 
+     "solution": r"Multiply top and bottom by conjugate $(\sqrt{3}+\sqrt{2})$. Denom becomes $3-2=1$."},
+
+    {"id": 310, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", 
+     "question": r"Identify the vertex of the parabola defined by the equation $y = x^2 - 4x + 7$.", 
+     "options": ["(2, 3)", "(2, 7)", "(-2, 3)", "(4, 7)"], "answer": "(2, 3)", 
+     "solution": r"$x = -b/2a = 4/2 = 2$. $y = 4 - 8 + 7 = 3$."},
+
+    {"id": 311, "difficulty": "Level 3: Difficult", "category": "Geometry & Data", 
+     "question": r"Compute the exact area of a regular hexagon with a side length of 2 units.", 
+     "options": ["$6\sqrt{3}$", "$12\sqrt{3}$", "$3\sqrt{3}$", "6"], "answer": ["$6\sqrt{3}$"], "answer": "$6\sqrt{3}$", 
+     "solution": r"Area $= 3\sqrt{3}/2 \times s^2 = 3\sqrt{3}/2 \times 4 = 6\sqrt{3}$."},
+
+    {"id": 312, "difficulty": "Level 3: Difficult", "category": "Number Theory & Probability", 
+     "question": r"A fair coin is tossed three times. What is the probability of getting exactly three heads?", 
+     "options": ["1/8", "1/4", "1/2", "1/6"], "answer": "1/8", 
+     "solution": r"$(1/2)^3 = 1/8$."},
+
+    {"id": 313, "difficulty": "Level 3: Difficult", "category": "Number Sense & Operations", 
+     "question": r"Solve for $x$ in the exponential equation $2^x \times 4 = 32$.", 
+     "options": ["3", "4", "5", "2"], "answer": "3", 
+     "solution": r"$2^x \cdot 2^2 = 2^5 \rightarrow x+2=5 \rightarrow x=3$."},
+
+    {"id": 314, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", 
+     "question": r"Determine the sum of the roots of the quadratic equation $x^2 - 10x + 21 = 0$.", 
+     "options": ["10", "21", "7", "3"], "answer": "10", 
+     "solution": r"Sum of roots $= -b/a = 10$."},
+
+    {"id": 315, "difficulty": "Level 3: Difficult", "category": "Geometry & Data", 
+     "question": r"Compute the distance between the points $(1,1)$ and $(4,5)$ on the Cartesian plane.", 
+     "options": ["5", "7", "4", "25"], "answer": "5", 
+     "solution": r"$\sqrt{(4-1)^2 + (5-1)^2} = \sqrt{9+16} = 5$."},
+
+    {"id": 316, "difficulty": "Level 3: Difficult", "category": "Number Theory & Probability", 
+     "question": r"Determine the number of ways to choose a committee of 2 members from a group of 5 students.", 
+     "options": ["10", "20", "5", "25"], "answer": "10", 
+     "solution": r"$5C2 = 10$."},
+
+    {"id": 317, "difficulty": "Level 3: Difficult", "category": "Number Sense & Operations", 
+     "question": r"Evaluate the radical exponent: $8^{2/3}$.", 
+     "options": ["4", "2", "16", "8"], "answer": "4", 
+     "solution": r"$\sqrt[3]{8}^2 = 2^2 = 4$."},
+
+    {"id": 318, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", 
+     "question": r"Determine the domain of the real-valued function $f(x) = \frac{1}{\sqrt{x-5}}$.", 
+     "options": ["$x > 5$", "$x \geq 5$", "$x \neq 5$", "All x"], "answer": "$x > 5$", 
+     "solution": r"Radicand must be positive: $x-5 > 0 \rightarrow x > 5$."},
+
+    {"id": 319, "difficulty": "Level 3: Difficult", "category": "Geometry & Data", 
+     "question": r"Calculate the sum of the interior angles of a convex decagon.", 
+     "options": ["1440°", "1800°", "1260°", "1620°"], "answer": "1440°", 
+     "solution": r"$(10-2) \times 180 = 1440^\circ$."},
+
+    {"id": 320, "difficulty": "Level 3: Difficult", "category": "Number Theory & Probability", 
+     "question": r"Find the remainder when the polynomial $x^2 - 5x + 6$ is divided by the linear term $(x - 1)$.", 
+     "options": ["2", "0", "6", "1"], "answer": "2", 
+     "solution": r"Substitute $x=1$: $1 - 5 + 6 = 2$."}
+]
