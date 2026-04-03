@@ -59,7 +59,7 @@ all_questions = [
      "solution": r"Prime factorization: $72 = 2^3 \times 3^2$. Number of factors = $(3+1)(2+1) = 12$."},
 
     {"id": 203, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", 
-     "question": r"A taxi company charges a base fee of $5.00 plus $2.50 per mile. If a passenger's total fare was $35.00, how many miles did they travel?", 
+     "question": r"A taxi company charges a base fee of /$5.00 plus /$2.50 per mile. If a passenger's total fare was $35.00, how many miles did they travel?", 
      "options": ["12", "14", "10", "15"], "answer": "12", 
      "solution": r"Equation: $5 + 2.5m = 35 \rightarrow 2.5m = 30 \rightarrow m = 12$."},
 
@@ -73,7 +73,7 @@ all_questions = [
     {"id": 206, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", "question": r"Solve for $x$ in the quadratic equation: $x^2 - 5x + 6 = 0$.", "options": ["2, 3", "-2, -3", "1, 6", "0, 5"], "answer": "2, 3", "solution": r"Factors as $(x-2)(x-3)=0$."},
     {"id": 207, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", "question": r"Find the hypotenuse of a right triangle with legs of length 5 and 12 units.", "options": ["13", "17", "15", "11"], "answer": "13", "solution": r"Using Pythagoras: $\sqrt{25+144} = 13$."},
     {"id": 208, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", "question": r"Probability of drawing a King or a Queen from a standard deck?", "options": ["2/13", "1/13", "4/13", "1/26"], "answer": "2/13", "solution": r"There are 8 such cards. $8/52 = 2/13$."},
-    {"id": 209, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", "question": r"Express 0.00045 in proper scientific notation.", "options": ["$4.5 \times 10^{-4}$", "$4.5 \times 10^{-5}$", "$45 \times 10^{-5}$", "0.45"], "answer": "$4.5 \times 10^{-4}$", "solution": r"Move the decimal 4 places to the right."},
+    {"id": 209, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", "question": r"Express 0.00045 in proper scientific notation.", "options": ["$4.5\times10^{-4}$", "$4.5\times10^{-5}$", "$45\times10^{-5}$", "0.45"], "answer": "$4.5 \times 10^{-4}$", "solution": r"Move the decimal 4 places to the right."},
     {"id": 210, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", "question": r"Solve the system of linear equations: $x+y=10$ and $x-y=2$.", "options": ["6, 4", "5, 5", "7, 3", "8, 2"], "answer": "6, 4", "solution": r"By addition: $2x=12 \rightarrow x=6, y=4$."},
     {"id": 211, "difficulty": "Level 2: Intermediate", "category": "Geometry & Data", "question": r"What is the interior angle measure of a regular hexagon?", "options": ["120", "108", "90", "135"], "answer": "120", "solution": r"Sum is 720. $720/6 = 120$."},
     {"id": 212, "difficulty": "Level 2: Intermediate", "category": "Number Theory & Probability", "question": r"What is the units digit of $3^{40}$?", "options": ["1", "3", "9", "7"], "answer": "1", "solution": r"The cycle is 3,9,7,1. $40 \div 4$ has no remainder."},
