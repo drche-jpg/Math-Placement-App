@@ -169,7 +169,7 @@ quiz_data = [
 # --- 3. UI AND LOGIC ---
 st.set_page_config(page_title="Grade 7 Math Placement", layout="centered")
 
-st.title("Grade 7-8 Advanced Math Placement Test")
+st.title("Grade 7 Advanced Math Placement Test")
 st.write("Please answer all questions. Your performance report will be generated immediately upon submission.")
 
 if 'submitted' not in st.session_state:
