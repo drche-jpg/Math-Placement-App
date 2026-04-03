@@ -108,6 +108,16 @@ quiz_data = [
         "question": "A rectangular garden is 12 meters long and 5 meters wide. What is the exact length of a straight diagonal path connecting two opposite corners?",
         "options": ["13 meters", "17 meters", "10.9 meters", "14 meters"],
         "answer": "13 meters",
+        "image_svg": '''
+        <div align="center">
+        <svg width="250" height="130" xmlns="http://www.w3.org/2000/svg">
+          <rect x="25" y="20" width="200" height="80" fill="#f0f8ff" stroke="#333" stroke-width="2"/>
+          <line x1="25" y1="100" x2="225" y2="20" stroke="#ff4b4b" stroke-width="2" stroke-dasharray="5,5"/>
+          <text x="110" y="118" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333">12 m</text>
+          <text x="0" y="65" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333">5 m</text>
+        </svg>
+        </div>
+        ''',
         "solution": r"Use the Pythagorean theorem ($a^2 + b^2 = c^2$) where the diagonal is the hypotenuse ($c$). $5^2 + 12^2 = c^2$. $25 + 144 = c^2$. $169 = c^2$. The square root of $169$ is $13$."
     },
     {
@@ -116,6 +126,20 @@ quiz_data = [
         "question": "A solid cylinder has a radius of 3 cm and a height of 10 cm. What is its exact volume?",
         "options": [r"$90\pi \text{ cm}^3$", r"$30\pi \text{ cm}^3$", r"$60\pi \text{ cm}^3$", r"$180\pi \text{ cm}^3$"],
         "answer": r"$90\pi \text{ cm}^3$",
+        "image_svg": '''
+        <div align="center">
+        <svg width="150" height="180" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="75" cy="30" rx="50" ry="15" fill="#e6f2ff" stroke="#333" stroke-width="2"/>
+          <ellipse cx="75" cy="150" rx="50" ry="15" fill="#f0f8ff" stroke="#333" stroke-width="2"/>
+          <line x1="25" y1="30" x2="25" y2="150" stroke="#333" stroke-width="2"/>
+          <line x1="125" y1="30" x2="125" y2="150" stroke="#333" stroke-width="2"/>
+          <line x1="75" y1="30" x2="125" y2="30" stroke="#ff4b4b" stroke-width="2" stroke-dasharray="4,4"/>
+          <circle cx="75" cy="30" r="3" fill="#333"/>
+          <text x="85" y="25" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ff4b4b">r = 3</text>
+          <text x="130" y="95" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333">h = 10</text>
+        </svg>
+        </div>
+        ''',
         "solution": r"The volume formula for a cylinder is $V = \pi r^2 h$. Substitute the given values: $V = \pi (3)^2 (10)$. Calculate the radius squared: $3^2 = 9$. Multiply by the height: $9 \times 10 = 90$. The exact volume is $90\pi \text{ cm}^3$."
     },
     {
@@ -124,6 +148,21 @@ quiz_data = [
         "question": r"Two parallel lines are intersected by a transversal line. If one interior angle measures $(3x - 15)^\circ$ and its alternate interior angle measures $(2x + 10)^\circ$, find the value of x.",
         "options": ["x = 25", "x = 5", "x = 35", "x = 15"],
         "answer": "x = 25",
+        "image_svg": '''
+        <div align="center">
+        <svg width="250" height="150" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20" y1="40" x2="230" y2="40" stroke="#333" stroke-width="2"/>
+          <line x1="20" y1="110" x2="230" y2="110" stroke="#333" stroke-width="2"/>
+          <line x1="60" y1="140" x2="190" y2="10" stroke="#ff4b4b" stroke-width="2"/>
+          
+          <path d="M 140 40 A 20 20 0 0 0 130 55" fill="none" stroke="#ff4b4b" stroke-width="2"/>
+          <path d="M 110 110 A 20 20 0 0 0 120 95" fill="none" stroke="#ff4b4b" stroke-width="2"/>
+          
+          <text x="65" y="60" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333">(3x - 15)°</text>
+          <text x="125" y="90" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333">(2x + 10)°</text>
+        </svg>
+        </div>
+        ''',
         "solution": r"Alternate interior angles are equal when lines are parallel. Set the equations equal to each other: $3x - 15 = 2x + 10$. Subtract $2x$ from both sides: $x - 15 = 10$. Add $15$ to both sides: $x = 25$."
     },
     {
@@ -203,6 +242,11 @@ if not st.session_state.submitted:
         user_answers = {}
         for idx, q in enumerate(quiz_data):
             st.markdown(f"**Q{idx+1}.** {q['question']}")
+            
+            # --> NEW: Check for an SVG image and draw it if it exists!
+            if "image_svg" in q:
+                st.markdown(q["image_svg"], unsafe_allow_html=True)
+                st.write("") 
             
             st.markdown(
                 f"**A)** {q['options'][0]}  \n"
@@ -308,7 +352,6 @@ if st.session_state.submitted:
             user_ans = st.session_state.user_answers[q['id']]
             correct_ans = q['answer']
             
-            # Determine if correct or wrong
             if user_ans == correct_ans:
                 status_icon = "✅"
                 st.markdown(f"**Q{idx+1}. {status_icon} Correct**")
@@ -317,6 +360,11 @@ if st.session_state.submitted:
                 st.markdown(f"**Q{idx+1}. {status_icon} Incorrect** (You chose: {user_ans})")
             
             st.markdown(f"**Question:** {q['question']}")
+            
+            # Show the picture again in the solutions!
+            if "image_svg" in q:
+                st.markdown(q["image_svg"], unsafe_allow_html=True)
+                
             st.markdown(f"**Correct Answer:** {correct_ans}")
             st.info(f"**Solution:** {q['solution']}")
             st.write("")
@@ -327,10 +375,4 @@ if st.session_state.submitted:
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         row = [timestamp, st.session_state.student_name, score, f"{percentage:.0f}%", eval_text]
         sheet.append_row(row)
-        st.success("Your results have been securely saved to the teacher's database.")
-    except Exception as e:
-        st.error(f"Error saving to database: {e}")
-
-    if st.button("Reset / Take Again"):
-        st.session_state.submitted = False
-        st.rerun()
+        st.success("Your results have been securely saved to the teacher
