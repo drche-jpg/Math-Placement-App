@@ -118,7 +118,7 @@ all_questions = [
      "solution": r"$72 = 2^3 \cdot 3^2$. Factors = $(3+1)(2+1) = 4 \times 3 = 12$."},
 
     {"id": 203, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", 
-     "question": r"A taxi company charges a base fee of /$5.00 plus an additional /$2.50 per mile traveled. If a passenger's total fare was /$35.00, compute the total distance traveled in miles.", 
+     "question": "A taxi company charges a base fee of \$5.00 plus an additional \$2.50 per mile traveled. If a passenger's total fare was \$35.00, compute the total distance traveled in miles.", 
      "options": ["12", "14", "10", "15"], "answer": "12", 
      "solution": r"$5 + 2.5m = 35 \rightarrow 2.5m = 30 \rightarrow m = 12$."},
 
