@@ -21,7 +21,7 @@ quiz_data = [
     {
         "id": 1,
         "category": "Number Sense & Operations",
-        "question": r"Evaluate: $ \left( -\frac{2}{3} \right)^2 \div \frac{4}{9} - (-3)^3 $",
+        "question": r"Evaluate: $\left( -\frac{2}{3} \right)^2 \div \frac{4}{9} - (-3)^3$",
         "options": ["28", "-26", "26", "-28"],
         "answer": "28"
     },
