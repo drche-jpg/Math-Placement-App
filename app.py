@@ -186,9 +186,23 @@ if not st.session_state.submitted:
         user_answers = {}
         for idx, q in enumerate(quiz_data):
             st.markdown(f"**Q{idx+1}.** {q['question']}")
-            # Radio buttons for options
-            user_answers[q['id']] = st.radio("Select answer:", q['options'], key=q['id'], index=None)
-            st.write("") 
+            
+            # 1. Display options using markdown so the math renders perfectly
+            st.markdown(
+                f"**A)** {q['options'][0]}  \n"
+                f"**B)** {q['options'][1]}  \n"
+                f"**C)** {q['options'][2]}  \n"
+                f"**D)** {q['options'][3]}"
+            )
+            
+            # 2. Use simple letters for the actual clickable buttons (horizontal looks best)
+            letter_choice = st.radio("Select your answer:", ["A", "B", "C", "D"], key=q['id'], index=None, horizontal=True)
+            
+            # 3. Map the letter back to the actual answer so the scoring system still works invisibly
+            letter_map = {"A": q['options'][0], "B": q['options'][1], "C": q['options'][2], "D": q['options'][3]}
+            user_answers[q['id']] = letter_map.get(letter_choice)
+            
+            st.write("---")
 
         submitted = st.form_submit_button("Submit Answers")
 
