@@ -2,15 +2,13 @@ import streamlit as st
 import gspread
 import datetime
 import pandas as pd
-import json
+import plotly.express as px
 
 # --- 1. GOOGLE SHEETS SETUP ---
 def init_gsheets():
-    # This checks if we are running on Streamlit Cloud (which uses st.secrets)
     if "gcp_service_account" in st.secrets:
         creds_dict = dict(st.secrets["gcp_service_account"])
         client = gspread.service_account_from_dict(creds_dict)
-    # If not on Streamlit Cloud, it assumes we are running locally and looks for the file
     else:
         client = gspread.service_account(filename='credentials.json')
         
@@ -174,20 +172,19 @@ st.set_page_config(page_title="Grade 7-8 Math Placement", layout="centered")
 st.title("Grade 7-8 Advanced Math Placement Test")
 st.write("Please answer all questions. Your performance report will be generated immediately upon submission.")
 
-# Initialize session state to track if quiz is submitted
 if 'submitted' not in st.session_state:
     st.session_state.submitted = False
 
 if not st.session_state.submitted:
     with st.form("quiz_form"):
         student_name = st.text_input("Student Name:")
-        
         st.write("---")
+        
         user_answers = {}
         for idx, q in enumerate(quiz_data):
             st.markdown(f"**Q{idx+1}.** {q['question']}")
             
-            # 1. Display options using markdown so the math renders perfectly
+            # Display options using markdown so math renders perfectly
             st.markdown(
                 f"**A)** {q['options'][0]}  \n"
                 f"**B)** {q['options'][1]}  \n"
@@ -195,10 +192,10 @@ if not st.session_state.submitted:
                 f"**D)** {q['options'][3]}"
             )
             
-            # 2. Use simple letters for the actual clickable buttons (horizontal looks best)
+            # Simple A/B/C/D radio buttons
             letter_choice = st.radio("Select your answer:", ["A", "B", "C", "D"], key=q['id'], index=None, horizontal=True)
             
-            # 3. Map the letter back to the actual answer so the scoring system still works invisibly
+            # Map letter back to answer text
             letter_map = {"A": q['options'][0], "B": q['options'][1], "C": q['options'][2], "D": q['options'][3]}
             user_answers[q['id']] = letter_map.get(letter_choice)
             
@@ -215,7 +212,7 @@ if not st.session_state.submitted:
                 st.session_state.submitted = True
                 st.rerun()
 
-# --- 4. EVALUATION & REPORTING ---
+# --- 4. EVALUATION, REPORTING & RADAR CHART ---
 if st.session_state.submitted:
     st.header(f"Results for {st.session_state.student_name}")
     
@@ -228,7 +225,6 @@ if st.session_state.submitted:
         "Number Theory & Probability": {"correct": 0, "total": 0}
     }
 
-    # Calculate scores
     for q in quiz_data:
         cat = q['category']
         category_scores[cat]["total"] += 1
@@ -239,7 +235,6 @@ if st.session_state.submitted:
 
     percentage = (score / total_questions) * 100
 
-    # Generate Performance Report
     st.subheader(f"Total Score: {score} / {total_questions} ({percentage:.0f}%)")
     
     if percentage >= 85:
@@ -251,7 +246,38 @@ if st.session_state.submitted:
         
     st.info(f"**Overall Evaluation:** {eval_text}")
 
-    st.write("### Diagnostic Breakdown")
+    # --- Generate Radar Chart ---
+    st.write("### Diagnostic Radar Analysis")
+    
+    radar_data = []
+    for cat, data in category_scores.items():
+        if data['total'] > 0:
+            cat_percent = (data['correct'] / data['total']) * 100
+        else:
+            cat_percent = 0
+        radar_data.append({"Category": cat, "Score": cat_percent})
+        
+    df_radar = pd.DataFrame(radar_data)
+
+    fig = px.line_polar(
+        df_radar, 
+        r='Score', 
+        theta='Category', 
+        line_close=True,
+        range_r=[0, 100],
+        markers=True
+    )
+    fig.update_traces(fill='toself', line_color='#1f77b4')
+    fig.update_layout(
+        polar=dict(
+            radialaxis=dict(visible=True, range=[0, 100])
+        ),
+        showlegend=False
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+    # --- Diagnostic Breakdown Progress Bars ---
+    st.write("### Detailed Breakdown")
     for cat, data in category_scores.items():
         if data['total'] > 0:
             cat_percent = (data['correct'] / data['total']) * 100
@@ -265,7 +291,7 @@ if st.session_state.submitted:
         sheet.append_row(row)
         st.success("Your results have been securely saved to the teacher's database.")
     except Exception as e:
-        st.error(f"Error saving to database. Please notify your instructor.")
+        st.error(f"Error saving to database: {e}")
 
     if st.button("Reset / Take Again"):
         st.session_state.submitted = False
