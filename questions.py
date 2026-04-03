@@ -118,7 +118,7 @@ all_questions = [
      "solution": r"$72 = 2^3 \cdot 3^2$. Factors = $(3+1)(2+1) = 4 \times 3 = 12$."},
 
     {"id": 203, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", 
-     "question": r"A taxi company charges a base fee of $5.00 plus an additional $2.50 per mile traveled. If a passenger's total fare was $35.00, compute the total distance traveled in miles.", 
+     "question": "A taxi company charges a base fee of /$5.00 plus an additional /$2.50 per mile traveled. If a passenger's total fare was /$35.00, compute the total distance traveled in miles.", 
      "options": ["12", "14", "10", "15"], "answer": "12", 
      "solution": r"$5 + 2.5m = 35 \rightarrow 2.5m = 30 \rightarrow m = 12$."},
 
@@ -150,7 +150,7 @@ all_questions = [
 
     {"id": 209, "difficulty": "Level 2: Intermediate", "category": "Number Sense & Operations", 
      "question": r"Represent the decimal value $0.00045$ in proper scientific notation.", 
-     "options": ["$4.5 \times 10^{-4}$", "$4.5 \times 10^{-5}$", "$45 \times 10^{-5}$", "0.45"], "answer": "$4.5 \times 10^{-4}$", 
+     "options": [r"$4.5 \times 10^{-4}$", r"$4.5 \times 10^{-5}$", r"$45 \times 10^{-5}$", "0.45"], "answer": "$4.5 \times 10^{-4}$", 
      "solution": r"Move decimal 4 places right: $4.5 \times 10^{-4}$."},
 
     {"id": 210, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", 
