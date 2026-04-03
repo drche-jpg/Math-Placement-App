@@ -35,7 +35,6 @@ if st.session_state.page == "setup":
         if st.form_submit_button("Begin Examination"):
             if name:
                 level_qs = [q for q in all_questions if q['difficulty'] == level]
-                # Randomly select 20 questions for this student
                 st.session_state.selected_quiz = random.sample(level_qs, min(20, len(level_qs)))
                 st.session_state.update({"student_name": name, "difficulty": level, "page": "quiz", "user_answers": {}})
                 st.rerun()
@@ -51,7 +50,7 @@ elif st.session_state.page == "quiz":
             st.markdown(f"### Question {idx+1}")
             st.markdown(f"{q['question']}")
             
-            # 1. DISPLAY CHOICES HORIZONTALLY (Above bubbles)
+            # Choice text ABOVE bubbles
             st.markdown(
                 f"**A)** {q['options'][0]} &nbsp;&nbsp;&nbsp;&nbsp; "
                 f"**B)** {q['options'][1]} &nbsp;&nbsp;&nbsp;&nbsp; "
@@ -59,7 +58,7 @@ elif st.session_state.page == "quiz":
                 f"**D)** {q['options'][3]}"
             )
             
-            # 2. SELECTION BUBBLES (Below choices)
+            # Selection bubbles BELOW choices
             choice = st.radio("Select choice:", ["A", "B", "C", "D"], key=q['id'], index=None, horizontal=True)
             
             l_map = {"A": q['options'][0], "B": q['options'][1], "C": q['options'][2], "D": q['options'][3]}
@@ -75,7 +74,6 @@ elif st.session_state.page == "quiz":
 elif st.session_state.page == "results":
     st.header(f"Performance Analysis: {st.session_state.student_name}")
     
-    # Calculate Scores
     score = 0
     categories = ["Number Sense & Operations", "Pre-Algebra & Equations", "Geometry & Data", "Number Theory & Probability"]
     cat_stats = {c: {"c": 0, "t": 0} for c in categories}
@@ -95,6 +93,42 @@ elif st.session_state.page == "results":
     fig = px.line_polar(df, r='Score', theta='Category', line_close=True, range_r=[0,100])
     fig.update_traces(fill='toself', line_color='#1f77b4')
     st.plotly_chart(fig, use_container_width=True)
+
+    # --- 4. PEDAGOGICAL FEEDBACK (Approx 100 words) ---
+    st.write("---")
+    st.subheader("Professional Teacher's Evaluation")
+    
+    if perc >= 85:
+        feedback = (
+            f"An exceptional performance by {st.session_state.student_name}. You have demonstrated a high level of "
+            f"mathematical fluency and an impressive ability to navigate complex, multi-step problems with precision. "
+            f"Your results indicate a mastery of the core curriculum at the {st.session_state.difficulty} level. "
+            f"This level of conceptual understanding and logical reasoning is excellent and suggests you are well-prepared "
+            f"for accelerated coursework. You exhibit strong critical thinking skills that allow you to apply abstract "
+            f"theories to practical calculations effortlessly."
+        )
+        recommendation = "Focus on advanced Olympiad-style problem solving to further sharpen your skills."
+    elif perc >= 65:
+        feedback = (
+            f"{st.session_state.student_name} has shown a solid and consistent understanding of the fundamental concepts "
+            f"within this assessment. You successfully identified the correct strategies for most problems, though some "
+            f"minor errors in calculation or conceptual application in more challenging questions were observed. "
+            f"Overall, you possess a healthy mathematical foundation that will serve as a strong base for future growth. "
+            f"With continued practice and a focus on detail, your path to full mastery is very clear."
+        )
+        recommendation = "Practice timed drills to increase both speed and accuracy in your calculations."
+    else:
+        feedback = (
+            f"This assessment serves as a valuable diagnostic for {st.session_state.student_name}. While there are "
+            f"clear signs of mathematical potential, the results suggest that several foundational concepts require "
+            f"further reinforcement. Strengthening your core skills in your lower-scoring categories will provide the "
+            f"confidence needed to tackle the more complex problems you encountered. Mathematics is a cumulative "
+            f"subject, and taking the time now to bridge these gaps will lead to much greater success later."
+        )
+        recommendation = "Focus on targeted review sessions for your lowest-scoring categories."
+
+    st.write(feedback)
+    st.info(f"**Recommendation:** {recommendation}")
     
     # Save to Google Sheet
     try:
@@ -102,8 +136,9 @@ elif st.session_state.page == "results":
         ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         cat_results = [f"{(cat_stats[c]['c']/cat_stats[c]['t'])*100:.0f}%" if cat_stats[c]['t']>0 else "0%" for c in categories]
         
-        sheet.append_row([ts, st.session_state.student_name, st.session_state.difficulty, score, f"{perc:.0f}%", "Done"] + cat_results)
-        st.success("Results successfully synchronized with teacher database.")
+        # Save Name, Level, Score, %, Full Feedback, and 4 Category Scores
+        sheet.append_row([ts, st.session_state.student_name, st.session_state.difficulty, score, f"{perc:.0f}%", feedback] + cat_results)
+        st.success("Results successfully saved to database.")
     except Exception as e:
         st.error(f"Database error: {e}")
 
@@ -114,11 +149,11 @@ elif st.session_state.page == "results":
             correct = u_ans == q['answer']
             st.write(f"**Q{idx+1}. {'✅ Correct' if correct else '❌ Incorrect'}**")
             st.write(f"**Question:** {q['question']}")
-            if not correct: st.write(f"**Your Answer:** {u_ans}")
+            if not correct: st.write(f"**Your Selection:** {u_ans}")
             st.write(f"**Correct Answer:** {q['answer']}")
             st.info(f"**Solution:** {q['solution']}")
             st.write("")
 
-    if st.button("Finish and Log Out"):
+    if st.button("Finish and Return to Home"):
         st.session_state.page = "setup"
         st.rerun()
