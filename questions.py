@@ -59,7 +59,7 @@ all_questions = [
      "solution": r"Prime factorization: $72 = 2^3 \times 3^2$. Number of factors = $(3+1)(2+1) = 12$."},
 
     {"id": 203, "difficulty": "Level 2: Intermediate", "category": "Pre-Algebra & Equations", 
-     "question": r"A taxi company charges a base fee of $5.00 plus $2.50 per mile. If a passenger's total fare was $35.00, how many miles did they travel?", 
+     "question": "A taxi company charges a base fee of $5.00 plus $2.50 per mile. If a passenger's total fare was $35.00, how many miles did they travel?", 
      "options": ["12", "14", "10", "15"], "answer": "12", 
      "solution": r"Equation: $5 + 2.5m = 35 \rightarrow 2.5m = 30 \rightarrow m = 12$."},
 
