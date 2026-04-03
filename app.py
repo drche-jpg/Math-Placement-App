@@ -375,4 +375,10 @@ if st.session_state.submitted:
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         row = [timestamp, st.session_state.student_name, score, f"{percentage:.0f}%", eval_text]
         sheet.append_row(row)
-        st.success("Your results have been securely saved to the teacher
+        st.success("Your results have been securely saved to the teacher's database.")
+    except Exception as e:
+        st.error(f"Error saving to database: {e}")
+
+    if st.button("Reset / Take Again"):
+        st.session_state.submitted = False
+        st.rerun()
