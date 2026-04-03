@@ -2,6 +2,6 @@ streamlit
 gspread
 pandas
 plotly
-kaleido==0.1.0.post1
+kaleido
 google-api-python-client
 google-auth
