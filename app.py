@@ -36,9 +36,9 @@ def upload_to_drive(file_name, image_bytes):
 for key in ['page', 'student_name', 'difficulty', 'user_answers', 'selected_quiz']:
     if key not in st.session_state:
         st.session_state[key] = "setup" if key == 'page' else "" if key != 'selected_quiz' else []
-if 'user_answers' not in st.session_state: st.session_state.user_answers = {}
 
 # --- 3. PAGE ROUTING ---
+
 # PAGE 1: SETUP
 if st.session_state.page == "setup":
     st.title("Math Placement Test")
@@ -47,9 +47,14 @@ if st.session_state.page == "setup":
         level = st.selectbox("Difficulty:", ["Level 1: Easy", "Level 2: Intermediate", "Level 3: Difficult"])
         if st.form_submit_button("Start Test"):
             if name:
-                st.session_state.update({"student_name": name, "difficulty": level, "page": "quiz"})
                 level_qs = [q for q in all_questions if q['difficulty'] == level]
-                st.session_state.selected_quiz = random.sample(level_qs, min(20, len(level_qs)))
+                st.session_state.update({
+                    "student_name": name, 
+                    "difficulty": level, 
+                    "page": "quiz",
+                    "selected_quiz": random.sample(level_qs, min(20, len(level_qs))),
+                    "user_answers": {}
+                })
                 st.rerun()
 
 # PAGE 2: QUIZ
@@ -62,24 +67,19 @@ elif st.session_state.page == "quiz":
         for idx, q in enumerate(st.session_state.selected_quiz):
             st.markdown(f"**Q{idx+1}.** {q['question']}")
             
-            if "image_svg" in q:
-                st.markdown(q["image_svg"], unsafe_allow_html=True)
-            
-            # 1. Choices moved ABOVE the radio buttons (no vertical bars)
+            # Choice text moved ABOVE radio
             st.markdown(
-                f"**A)** {q['options'][0]} &nbsp;&nbsp; "
-                f"**B)** {q['options'][1]} &nbsp;&nbsp; "
-                f"**C)** {q['options'][2]} &nbsp;&nbsp; "
+                f"**A)** {q['options'][0]} &nbsp;&nbsp;&nbsp; "
+                f"**B)** {q['options'][1]} &nbsp;&nbsp;&nbsp; "
+                f"**C)** {q['options'][2]} &nbsp;&nbsp;&nbsp; "
                 f"**D)** {q['options'][3]}"
             )
             
-            # 2. Radio buttons moved BELOW the choices
-            choice = st.radio("Select your answer:", ["A", "B", "C", "D"], key=q['id'], index=None, horizontal=True)
+            # Radio buttons BELOW choice text
+            choice = st.radio("Select answer:", ["A", "B", "C", "D"], key=q['id'], index=None, horizontal=True)
             
-            # Logic to map the letter to the actual option text for scoring
-            letter_map = {"A": q['options'][0], "B": q['options'][1], "C": q['options'][2], "D": q['options'][3]}
-            temp_answers[q['id']] = letter_map.get(choice) if choice else None
-            
+            l_map = {"A": q['options'][0], "B": q['options'][1], "C": q['options'][2], "D": q['options'][3]}
+            temp_answers[q['id']] = l_map.get(choice)
             st.write("---")
             
         if st.form_submit_button("Submit"):
@@ -90,36 +90,62 @@ elif st.session_state.page == "quiz":
 # PAGE 3: RESULTS
 elif st.session_state.page == "results":
     st.header(f"Results: {st.session_state.student_name}")
+    
     score = 0
-    cat_stats = {}
+    cat_stats = {
+        "Number Sense & Operations": {"c": 0, "t": 0},
+        "Pre-Algebra & Equations": {"c": 0, "t": 0},
+        "Geometry & Data": {"c": 0, "t": 0},
+        "Number Theory & Probability": {"c": 0, "t": 0}
+    }
+    
     for q in st.session_state.selected_quiz:
         cat = q['category']
-        if cat not in cat_stats: cat_stats[cat] = {"c": 0, "t": 0}
         cat_stats[cat]["t"] += 1
         if st.session_state.user_answers.get(q['id']) == q['answer']:
             score += 1
             cat_stats[cat]["c"] += 1
     
     perc = (score / len(st.session_state.selected_quiz)) * 100
-    st.subheader(f"Score: {score}/20 ({perc:.0f}%)")
+    st.subheader(f"Total Score: {score}/20 ({perc:.0f}%)")
     
     # Radar Chart
-    df = pd.DataFrame([{"Category": k, "Score": (v['c']/v['t'])*100} for k,v in cat_stats.items()])
+    df = pd.DataFrame([{"Category": k, "Score": (v['c']/v['t'])*100 if v['t']>0 else 0} for k,v in cat_stats.items()])
     fig = px.line_polar(df, r='Score', theta='Category', line_close=True, range_r=[0,100])
     fig.update_traces(fill='toself')
     st.plotly_chart(fig)
     
     # Save Image & Data
     try:
+        # 1. Save Image to Drive
         fname = f"{st.session_state.student_name}_{st.session_state.difficulty}".replace(" ","_")
-        upload_to_drive(f"{fname}.png", fig.to_image(format="png"))
+        img_bytes = fig.to_image(format="png")
+        upload_to_drive(f"{fname}.png", img_bytes)
         
+        # 2. Save Data to Sheets
         sheet = init_gsheets()
         ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        c_scores = [f"{(cat_stats.get(c,{'c':0,'t':1})['c']/cat_stats.get(c,{'c':0,'t':1})['t'])*100:.0f}%" for c in ["Number Sense & Operations", "Pre-Algebra & Equations", "Geometry & Data", "Number Theory & Probability"]]
-        sheet.append_row([ts, st.session_state.student_name, st.session_state.difficulty, score, f"{perc:.0f}%", "Done"] + c_scores)
-        st.success("Results and Radar chart saved!")
-    except Exception as e: st.error(f"Save error: {e}")
+        
+        # Build category score list for the row
+        cat_row = []
+        for c in ["Number Sense & Operations", "Pre-Algebra & Equations", "Geometry & Data", "Number Theory & Probability"]:
+            s = cat_stats.get(c, {'c':0,'t':1})
+            cat_row.append(f"{(s['c']/s['t'])*100:.0f}%")
+            
+        sheet.append_row([ts, st.session_state.student_name, st.session_state.difficulty, score, f"{perc:.0f}%", "Completed"] + cat_row)
+        st.success("Analysis complete. Radar chart and scores have been recorded.")
+        
+    except Exception as e:
+        st.warning(f"Recorded results, but encountered a save error: {e}")
+
+    # Solutions
+    with st.expander("View Step-by-Step Solutions"):
+        for idx, q in enumerate(st.session_state.selected_quiz):
+            u_ans = st.session_state.user_answers.get(q['id'])
+            status = "✅" if u_ans == q['answer'] else f"❌ (You chose: {u_ans})"
+            st.write(f"**Q{idx+1}. {status}**")
+            st.write(f"Question: {q['question']}")
+            st.info(f"Solution: {q['solution']}")
 
     if st.button("New Test"):
         st.session_state.page = "setup"
