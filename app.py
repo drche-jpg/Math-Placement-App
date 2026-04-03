@@ -55,14 +55,33 @@ if st.session_state.page == "setup":
 # PAGE 2: QUIZ
 elif st.session_state.page == "quiz":
     st.title(st.session_state.difficulty)
+    st.write(f"Student: **{st.session_state.student_name}**")
+    
     with st.form("quiz_form"):
         temp_answers = {}
         for idx, q in enumerate(st.session_state.selected_quiz):
             st.markdown(f"**Q{idx+1}.** {q['question']}")
-            choice = st.radio("Answer:", ["A", "B", "C", "D"], key=q['id'], index=None, horizontal=True)
-            st.markdown(f"**A)** {q['options'][0]} | **B)** {q['options'][1]} | **C)** {q['options'][2]} | **D)** {q['options'][3]}")
-            temp_answers[q['id']] = q['options'][["A","B","C","D"].index(choice)] if choice else None
+            
+            if "image_svg" in q:
+                st.markdown(q["image_svg"], unsafe_allow_html=True)
+            
+            # 1. Choices moved ABOVE the radio buttons (no vertical bars)
+            st.markdown(
+                f"**A)** {q['options'][0]} &nbsp;&nbsp; "
+                f"**B)** {q['options'][1]} &nbsp;&nbsp; "
+                f"**C)** {q['options'][2]} &nbsp;&nbsp; "
+                f"**D)** {q['options'][3]}"
+            )
+            
+            # 2. Radio buttons moved BELOW the choices
+            choice = st.radio("Select your answer:", ["A", "B", "C", "D"], key=q['id'], index=None, horizontal=True)
+            
+            # Logic to map the letter to the actual option text for scoring
+            letter_map = {"A": q['options'][0], "B": q['options'][1], "C": q['options'][2], "D": q['options'][3]}
+            temp_answers[q['id']] = letter_map.get(choice) if choice else None
+            
             st.write("---")
+            
         if st.form_submit_button("Submit"):
             st.session_state.user_answers = temp_answers
             st.session_state.page = "results"
