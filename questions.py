@@ -11,7 +11,7 @@ all_questions = [
     
     {"id": 102, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", 
      "question": r"In a controlled laboratory experiment, a liquid starts at an initial temperature of $-12^\circ\text{C}$. If the liquid is heated at a constant rate until its temperature rises by exactly $25^\circ\text{C}$, what is the final recorded temperature?", 
-     "options": ["$13^\circ\text{C}$", "$-13^\circ\text{C}$", "$37^\circ\text{C}$", "$12^\circ\text{C}$"], "answer": "$13^\circ\text{C}$", 
+     "options": [r"$13^\circ\text{C}$", r"$-13^\circ\text{C}$", r"$37^\circ\text{C}$", r"$12^\circ\text{C}$"], "answer": "$13^\circ\text{C}$", 
      "solution": r"The final temperature is found by the sum: $-12 + 25 = 13$."},
 
     {"id": 103, "difficulty": "Level 1: Easy", "category": "Number Sense & Operations", 
