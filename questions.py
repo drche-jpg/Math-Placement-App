@@ -307,7 +307,7 @@ all_questions = [
      "options": ["1440°", "1800°", "1260°", "1620°"], "answer": "1440°", 
      "solution": r"$(10-2) \times 180 = 1440^\circ$."},
   
-       {"id": 321, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", 
+    {"id": 320, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", 
      "question": r"Let $f(x) = (2x^2 + 7x + 3)(x^2 - 2x - 15)$. The graph of $f(x)$ in the coordinate plane is translated 4 units to the right and then rotated about the origin by 180 degrees. The resulting graph is the graph of the function $g(x)$. Compute the sum of the distinct roots of $g(x)$.", 
      "options": ["-1", "-23/2", "-5", "-27/2"], "answer": "-27/2", 
      "solution": r"Let the original function be $f(x) = (2x^2 + 7x + 3)(x^2 - 2x - 15)$.
