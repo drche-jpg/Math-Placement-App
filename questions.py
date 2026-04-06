@@ -306,66 +306,8 @@ all_questions = [
      "question": r"Calculate the sum of the interior angles of a convex decagon.", 
      "options": ["1440°", "1800°", "1260°", "1620°"], "answer": "1440°", 
      "solution": r"$(10-2) \times 180 = 1440^\circ$."},
-   {"id": 320, "difficulty": "Level 3: Difficult", "category": "Pre-Algebra & Equations", 
-     "question": r"Let $f(x) = (2x^2 + 7x + 3)(x^2 - 2x - 15)$. The graph of $f(x)$ in the coordinate plane is translated 4 units to the right and then rotated about the origin by 180 degrees. The resulting graph is the graph of the function $g(x)$. Compute the sum of the distinct roots of $g(x)$.", 
-     "options": ["-1", "-23/2", "-5", "-27/2"], "answer": "-27/2", 
-     "solution": r"Let the original function be $f(x) = (2x^2 + 7x + 3)(x^2 - 2x - 15)$.
-
-First, we find the roots of $f(x)$ by setting $f(x) = 0$.
-
-We factor each quadratic expression:
-1. $2x^2 + 7x + 3 = 0$
-   $(2x + 1)(x + 3) = 0$
-   The roots are $x = -\frac{1}{2}$ and $x = -3$.
-2. $x^2 - 2x - 15 = 0$
-   $(x - 5)(x + 3) = 0$
-   The roots are $x = 5$ and $x = -3$.
-
-The distinct roots of $f(x)$ are $r_1 = -\frac{1}{2}$, $r_2 = -3$, and $r_3 = 5$.
-
-Next, we analyze the transformations to find $g(x)$.
-Starting with $y = f(x)$:
-1. Translated 4 units to the right: This transformation replaces $x$ with $(x - 4)$. So, the new function is $y_1 = f(x - 4)$.
-2. Rotated about the origin by 180 degrees: A rotation of 180 degrees about the origin maps a point $(X, Y)$ to $(-X, -Y)$.
-   If $(X, Y)$ is a point on $y_1 = f(X - 4)$, then $Y = f(X - 4)$.
-   Let the new coordinates be $(x_{new}, y_{new})$. So $x_{new} = -X$ and $y_{new} = -Y$.
-   This implies $X = -x_{new}$ and $Y = -y_{new}$.
-   Substituting these into $Y = f(X - 4)$:
-   $-y_{new} = f(-x_{new} - 4)$
-   $y_{new} = -f(-x_{new} - 4)$
-   So, the function $g(x)$ is $g(x) = -f(-x - 4)$.
-
-We need to compute the sum of the distinct roots of $g(x)$, which means we need to solve $g(x) = 0$.
-$-f(-x - 4) = 0$
-$f(-x - 4) = 0$
-
-This means that the expression $(-x - 4)$ must be equal to one of the distinct roots of $f(x)$.
-
-Case 1: $-x - 4 = -\frac{1}{2}$
-   $-x = 4 - \frac{1}{2}$
-   $-x = \frac{8}{2} - \frac{1}{2}$
-   $-x = \frac{7}{2}$
-   $x = -\frac{7}{2}$
-
-Case 2: $-x - 4 = -3$
-   $-x = 4 - 3$
-   $-x = 1$
-   $x = -1$
-
-Case 3: $-x - 4 = 5$
-   $-x = 4 + 5$
-   $-x = 9$
-   $x = -9$
-
-The distinct roots of $g(x)$ are $- \frac{7}{2}$, $-1$, and $-9$.
-
-Finally, we compute the sum of these distinct roots:
-Sum $= -\frac{7}{2} + (-1) + (-9)$
-Sum $= -\frac{7}{2} - 10$
-Sum $= -\frac{7}{2} - \frac{20}{2}$
-Sum $= -\frac{27}{2}$"},
-    
-    {"id": 321, "difficulty": "Level 3: Difficult", "category": "Number Theory & Probability", 
+  
+    {"id": 320, "difficulty": "Level 3: Difficult", "category": "Number Theory & Probability", 
      "question": r"Find the remainder when the polynomial $x^2 - 5x + 6$ is divided by the linear term $(x - 1)$.", 
      "options": ["2", "0", "6", "1"], "answer": "2", 
      "solution": r"Substitute $x=1$: $1 - 5 + 6 = 2$."}
