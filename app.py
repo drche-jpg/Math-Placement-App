@@ -38,7 +38,15 @@ def init_gsheets():
     except Exception as e:
         st.error(f"การเชื่อมต่อฐานข้อมูลขัดข้อง: {e}")
     return None
-
+# โค้ดสำหรับซ่อนเมนู มุมขวาบน และ Footer ของ Streamlit
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 # --- 2. CONFIGURATION ---
 st.set_page_config(page_title="Math Olympiad Placement", layout="wide")
 
